@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gensyn OS</title>
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="GenOs.css">
+
+</head>
+<body>
+
+    <!-- CRT Overlay for retro feel -->
+    <div class="crt-overlay"></div>
+
+    <!-- BOOT SCREEN -->
+    <div id="boot-screen">
+        <div class="boot-content">
+            <div class="boot-logo">GENSYN OS</div>
+            <div id="boot-text"></div>
+            <div class="loading-bar" id="boot-bar" style="display:none;">
+                <div class="loading-fill" id="boot-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESKTOP ENVIRONMENT -->
+    <div id="desktop">
+        
+        <div class="watermark">GENSYN<span style="color:rgba(0,255,255,0.1);">OS</span></div>
+        <div class="grid-lines"></div>
+
+        <!-- ICONS: COLUMN 1 (x: 20px) -->
+        <div class="desktop-icon" style="top: 20px; left: 20px;" onclick="handleIconClick('codeassist')">
+            <i class="fa-solid fa-code" style="color: #fb923c;"></i>
+            <span>CodeAssist</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 130px; left: 20px;" onclick="handleIconClick('sapo')">
+            <i class="fa-solid fa-network-wired" style="color: #22d3ee;"></i>
+            <span>Sapo</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 240px; left: 20px;" onclick="handleIconClick('judge')">
+            <i class="fa-solid fa-gavel" style="color: #e879f9;"></i>
+            <span>Judge</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 350px; left: 20px;" onclick="handleIconClick('verde')">
+            <i class="fa-solid fa-leaf" style="color: #4ade80;"></i>
+            <span>Verde</span>
+        </div>
+
+
+        <!-- ICONS: COLUMN 2 (x: 150px) -->
+        <div class="desktop-icon" style="top: 20px; left: 150px;" onclick="handleIconClick('wallpapers')">
+            <i class="fa-solid fa-image" style="color: #fca5a5;"></i>
+            <span>Gensyn<br>Gallery</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 130px; left: 150px;" onclick="handleIconClick('knowteam')">
+            <i class="fa-solid fa-users" style="color: #60a5fa;"></i>
+            <span>Know Your<br>Team</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 240px; left: 150px;" onclick="handleIconClick('factcards')">
+            <i class="fa-solid fa-address-card" style="color: #facc15;"></i>
+            <span>Fact Cards</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 350px; left: 150px;" onclick="handleIconClick('wordgame')">
+            <i class="fa-solid fa-gamepad" style="color: #a78bfa;"></i>
+            <span>Word<br>Construct</span>
+        </div>
+
+
+        <!-- ICONS: COLUMN 3 (x: 280px) -->
+        <div class="desktop-icon" style="top: 20px; left: 280px;" onclick="handleIconClick('market')">
+            <i class="fa-solid fa-chart-line" style="color: #34d399;"></i>
+            <span>Gensyn<br>Market</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 130px; left: 280px;" onclick="handleIconClick('blazy')">
+            <i class="fa-solid fa-robot" style="color: #f472b6;"></i>
+            <span>Blazy<br>Agent</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 240px; left: 280px;" onclick="handleIconClick('nodeguide')">
+            <i class="fa-solid fa-book-open-reader" style="color: #fbbf24;"></i>
+            <span>Node<br>Guide</span>
+        </div>
+
+        <div class="desktop-icon" style="top: 350px; left: 280px;" onclick="handleIconClick('eventhub')">
+            <i class="fa-solid fa-calendar-days" style="color: #818cf8;"></i>
+            <span>Event<br>Hub</span>
+        </div>
+
+        <!-- Recycle Bin -->
+        <div class="desktop-icon" style="bottom: 60px; right: 20px;" onclick="handleIconClick('recycle')">
+            <i class="fa-solid fa-trash-can" style="color: #c0c0c0;"></i>
+            <span>Recycle Bin</span>
+        </div>
+
+        <!-- Mascot -->
+        <div id="mascot">
+            <div class="mascot-antenna"><div class="mascot-bulb"></div></div>
+            <div class="mascot-body">
+                <div class="mascot-screen">
+                    <div class="mascot-face">^__^</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="speech-bubble" id="speech-bubble">
+            <strong>System Expanded!</strong><br>
+            <p>I've installed the new community modules.</p>
+            <p>Blazy, Node Buddy, and the Event Hub are ready!</p>
+        </div>
+
+        <!-- Glitch Aesthetics -->
+        <div class="glitch-bar"></div>
+        <div class="glitch-bar" style="right: 5%; width: 20px; animation-duration: 3s; background: rgba(0,0,255,0.05);"></div>
+
+        <!-- Start Menu -->
+        <div id="start-menu">
+            <div class="start-sidebar">
+                <span>GENSYN 98</span>
+            </div>
+            <div class="start-items">
+                <div class="start-item" onclick="openWindow('codeassist')">
+                    <i class="fa-solid fa-code"></i> CodeAssist
+                </div>
+                <div class="start-item" onclick="openWindow('market')">
+                    <i class="fa-solid fa-chart-line"></i> Market
+                </div>
+                <div class="start-item" onclick="openWindow('sapo')">
+                    <i class="fa-solid fa-network-wired"></i> Sapo
+                </div>
+                <div class="start-item" onclick="openWindow('nodeguide')">
+                    <i class="fa-solid fa-book"></i> Node Guide
+                </div>
+                <hr style="border-top: 1px solid #808080; border-bottom: 1px solid #fff; margin: 5px 0;">
+                <div class="start-item" onclick="location.reload()">
+                    <i class="fa-solid fa-power-off" style="color: red;"></i> Shut Down
+                </div>
+            </div>
+        </div>
+
+        <!-- Taskbar -->
+        <div id="taskbar">
+            <div class="start-btn" id="start-btn" onclick="toggleStartMenu()">
+                <i class="fa-brands fa-windows"></i> Start
+            </div>
+            <div class="taskbar-divider"></div>
+            <div id="taskbar-items" style="display:flex; flex:1;">
+                <!-- Task items will be injected here -->
+            </div>
+            <div class="tray">
+                <i class="fa-solid fa-volume-high"></i>
+                <span id="clock">12:00 PM</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AUDIO CONTEXT (For Sound Effects) -->
+    <script src="GenOs.js"></script>
+
+</body>
+</html>
